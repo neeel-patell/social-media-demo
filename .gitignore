@@ -1,0 +1,6 @@
+
+mail/class.phpmailer.php
+mail/class.smtp.php
+connection.php
+mail/mail_sender.php
+mail/PHPMailerAutoload.php

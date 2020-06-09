@@ -1,5 +1,5 @@
 <?php require_once 'login_check.php'; ?>
-<header class="jumbotron p-0 mdb-color darken-3 mb-0">
+<header class="jumbotron p-2 mdb-color darken-3 mb-0">
     <div class="row p-5">
         <div class="col-md-6 mb-3">
             <h4 class="font-weight-bolder text-monospace text-warning"><i class="fas fa-globe"></i> Social App <i class="fas fa-users"></i></h4>
