@@ -25,6 +25,7 @@
     <div class="collapse navbar-collapse" id="nav_bar">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
+                <a class="nav-link brown-text font-weight-bold" data-toggle="collapse" data-target="#post_collapse" area-expanded="false"><i class="fas fa-plus"></i> Add Post</a>
             </li>
         </ul>
     </div>
