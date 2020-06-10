@@ -19,7 +19,7 @@
         $user = $result->fetch_array();
         session_unset();
         $_SESSION['login'] = $user['id'];
-        header('location: index.php');
+        header('location: user/index.php');
     }
     else{
         header('location: registration.php?msg=da');

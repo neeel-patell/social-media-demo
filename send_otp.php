@@ -5,7 +5,7 @@
     $conn = getConn();
     
     $email = $_POST['email'];
-    $query = "select id from login where email='$email'";
+    $query = "select id from user where email='$email'";
     $result = $conn->query($query);
     if(mysqli_num_rows($result) == 0){
         $_SESSION['email'] = $email;
@@ -17,7 +17,7 @@
         header("location: registration.php?msg=eo");
     }
     else{
-        header("location: verify_email.php?msg=ee");
+        header("location: registration.php?msg=ee");
     }
 
 ?>
