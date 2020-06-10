@@ -1,16 +1,16 @@
 <?php
     require 'login_check.php';
     $conn = getConn(); 
-    $type = $conn->query("select name from type");
-    $artist = $conn->query("select first_name,last_name,username from artist");
+    $type = $conn->query("select name from type"); // Fetch for display in type in add post
+    $artist = $conn->query("select first_name,last_name,username from artist"); // Fetch for display in type in add post
     $friends = array();
-    $result = $conn->query("select friend_id from friend where user_id=$login");
+    $result = $conn->query("select friend_id from friend where user_id=$login"); // Fetched to see posts of people who are connected with you
     while($row = $result->fetch_array()){
         array_push($friends,$row['friend_id']);
     }
     $friends = implode(",",$friends);
     
-    $query = "select id'image',description,type_id'type',user_id'user',created_at'date' from post where user_id in ($friends,$login) order by created_at desc";
+    $query = "select id'image',description,type_id'type',user_id'user',created_at'date' from post where user_id in ($friends,$login) order by created_at desc"; // Fetch posts to display
     $post = $conn->query($query);
 ?>
 <!doctype html>
@@ -66,14 +66,14 @@
         <div class="container w-50 mt-3">
             <?php
                 while($row = $post->fetch_array()){ 
-                $result = $conn->query("select first_name,last_name from user where id=".$row['user']);
+                $result = $conn->query("select first_name,last_name from user where id=".$row['user']); // Name of User who's post is
                 $result = $result->fetch_array();
                 $row['user'] = $result['first_name']." ".$result['last_name'];
-                $description = explode(" ",$row['description']);
-                $type = $conn->query("select name from type where id=".$row['type']);
+                $description = explode(" ",$row['description']); // Description stored as array to find existing urls
+                $type = $conn->query("select name from type where id=".$row['type']); // Find type of post
                 $type = $type->fetch_array();
                 $tagged = "";
-                $result = $conn->query("select username from artist join post_artist where post_artist.post_id=".$row['image']." and artist_id=artist.id");
+                $result = $conn->query("select username from artist join post_artist where post_artist.post_id=".$row['image']." and artist_id=artist.id"); // Find tagged artists in the post
                 while($artist = $result->fetch_array()){
                     $tagged .= $artist['username']." ";
                 }
@@ -98,8 +98,8 @@
                             <div class="border border-success rounded p-3 mt-2">
                             <?php
                                 foreach($description as $data){
-                                    if(preg_match("#[-a-zA-Z0-9@:%_\+.~\#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~\#?&//=]*)?#si",$data)){
-                                        echo "<a href='$data' target='_blank'>$data</a> ";
+                                    if(preg_match("#[-a-zA-Z0-9@:%_\+.~\#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~\#?&//=]*)?#si",$data)){ // Finding of link if word is link
+                                        echo "<a href='$data' target='_blank'>$data</a> "; 
                                     }
                                     else{
                                         echo $data." ";

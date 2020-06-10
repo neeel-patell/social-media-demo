@@ -1,11 +1,11 @@
 <?php
     session_start();
     $msg = "";
-    if(isset($_SESSION['login'])){
+    if(isset($_SESSION['login'])){ // send to feed when user is already logged in
         header('location: user/index.php');
     }
     if(isset($_GET['msg'])){
-        $msg = $_GET['msg'];
+        $msg = $_GET['msg']; // user alert messages
     }
 ?>
 <!doctype html>

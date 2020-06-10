@@ -11,7 +11,7 @@
     $login = $_SESSION['login'];
     $image = $_FILES['image'];
     
-    $type = $conn->query("select id from type where name='$type'");
+    $type = $conn->query("select id from type where name='$type'"); // get id of a time to insert into database
     $type = $type->fetch_array();
     $type = $type['id'];
 
@@ -20,7 +20,7 @@
         $post = $conn->query("select id from post where description='$description' and type_id=$type and user_id=$login"); // to get unique post id
         $post = $post->fetch_array();
         $post = $post['id'];
-        move_uploaded_file($image['tmp_name'],"../files/images/posts/$post.jpg");
+        move_uploaded_file($image['tmp_name'],"../files/images/posts/$post.jpg"); // upload image of post
         foreach($artist as $data){
             $query = "select id from artist where username='@$data'";
             $result = $conn->query($query);

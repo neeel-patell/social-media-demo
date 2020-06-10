@@ -2,13 +2,13 @@
     session_start();
     $email = $otp = $msg = "";
     $otpfail = 1; 
-    if(isset($_SESSION['email'])){
+    if(isset($_SESSION['email'])){ // email session on which otp sent or varified
         $email = $_SESSION['email'];
     }
-    if(isset($_SESSION['otpfail'])){
+    if(isset($_SESSION['otpfail'])){ // will be 0 after email got varified
         $otpfail = $_SESSION['otpfail'];
     }
-    if(isset($_SESSION['otp'])){
+    if(isset($_SESSION['otp'])){ // random generated otp 
         $otp = $_SESSION['otp'];
     }
     if(isset($_GET['msg'])){

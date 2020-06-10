@@ -3,3 +3,5 @@
 
 <link href="../resources/css/bootstrap.min.css" rel="stylesheet">
 <link href="../resources/css/mdb.min.css" rel="stylesheet">
+
+<!-- CSS links -->

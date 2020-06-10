@@ -1,6 +1,7 @@
 <?php
-    if(isset($_SESSION['login'])){
-        //header('location: user/index.php');
+    session_start();
+    if(isset($_SESSION['login'])){ // Check that user already logged in or not
+        header('location: user/index.php'); // sent to dashboard if user's already logged in
     }
 ?>
 <!doctype html>
