@@ -28,6 +28,8 @@
                     <div class="alert alert-danger text-center" role="alert">Wrong Password...</div>
                     <?php } else if($msg === 'ne'){ ?>
                     <div class="alert alert-danger text-center" role="alert">Email does not Exist...</div>
+                    <?php } else if($msg === 'blocked'){ ?>
+                    <div class="alert alert-danger text-center" role="alert">Your ID is blocked by Admin...</div>
                     <?php } ?>
                     
                     <form method="post" action="login_user.php">

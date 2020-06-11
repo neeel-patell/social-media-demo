@@ -19,7 +19,7 @@
         $user = $result->fetch_array();
         session_unset();
         $_SESSION['login'] = $user['id']; // setting user id as user directly logged in exact after registration
-        header('location: user/index.php'); // redirection to feed
+        header('location: set_username.php'); // redirection to set username for user
     }
     else{
         header('location: registration.php?msg=da'); // Registration failed
