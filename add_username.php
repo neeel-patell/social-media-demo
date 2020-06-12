@@ -5,6 +5,7 @@
 
     $login = $_SESSION['login'];
     $username = $_POST['username'];
+    $username = strtolower($username);
 
     $query = "select id from user where username='$username'";
     $result = $conn->query($query);

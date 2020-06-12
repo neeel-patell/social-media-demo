@@ -6,8 +6,8 @@
         </div>
         <div class="col-md-6 text-right">
             <div class="btn-group">
-                <button type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-alt"></i> <?php echo $full_name; ?>
+                <button type="button" class="btn btn-outline-light btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="text-lowercase h6 text-monospace"><i class="fas fa-user-alt"></i> <?php echo $full_name; ?></span>
                 </button>
                 <div class="dropdown-menu text-center">
                     <a class="dropdown-item" href="#">Profile <i class="fas fa-user-alt"></i></a>
@@ -26,6 +26,9 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
                 <a class="nav-link brown-text font-weight-bold" data-toggle="collapse" data-target="#post_collapse" area-expanded="false"><i class="fas fa-plus"></i> Add Post</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link brown-text font-weight-bold" href="friends.php"><i class="fas fa-users"></i> Friends</a>
             </li>
         </ul>
     </div>

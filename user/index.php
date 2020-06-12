@@ -4,7 +4,7 @@
     $type = $conn->query("select name from type"); // Fetch for display in type in add post
     $artist = $conn->query("select first_name,last_name,username from artist"); // Fetch for display in type in add post
     $friends = array();
-    $result = $conn->query("select friend_id from friend where user_id=$login"); // Fetched to see posts of people who are connected with you
+    $result = $conn->query("select friend_id from friend where user_id=$login and approve=1"); // Fetched to see posts of people who are connected with you
     while($row = $result->fetch_array()){
         array_push($friends,$row['friend_id']);
     }
@@ -66,9 +66,9 @@
         <div class="container w-50 mt-3">
             <?php
                 while($row = $post->fetch_array()){ 
-                $result = $conn->query("select first_name,last_name from user where id=".$row['user']); // Name of User who's post is
+                $result = $conn->query("select username from user where id=".$row['user']); // Name of User who's post is
                 $result = $result->fetch_array();
-                $row['user'] = $result['first_name']." ".$result['last_name'];
+                $row['user'] = '@ '.$result['username'];
                 $description = explode(" ",$row['description']); // Description stored as array to find existing urls
                 $type = $conn->query("select name from type where id=".$row['type']); // Find type of post
                 $type = $type->fetch_array();
