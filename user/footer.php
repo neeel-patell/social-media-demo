@@ -6,5 +6,6 @@
 <script src="../resources/js/popper.min.js"></script>
 <script src="../resources/js/bootstrap.min.js"></script>
 <script src="../resources/js/mdb.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
 <!-- JS Link files and footer -->
