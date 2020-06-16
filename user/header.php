@@ -16,7 +16,10 @@
                 <a class="nav-link brown-text font-weight-bold" href="index.php"><i class="fas fa-home"></i> Feed</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link brown-text font-weight-bold" href="friends.php"><i class="fas fa-users"></i> Friends</a>
+                <a class="nav-link brown-text font-weight-bold" href="friends.php"><i class="fas fa-people-arrows"></i> Friends</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link brown-text font-weight-bold" href="people.php"><i class="fas fa-users"></i> People</a>
             </li>
         </ul>
         <form class="form-inline">

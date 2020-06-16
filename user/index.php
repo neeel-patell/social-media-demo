@@ -23,7 +23,7 @@
     </head>
     <body>
         <?php require 'header.php'; ?>
-        <h3 class="container-fluid text-white bg-primary p-3 text-center">Feed</h3>
+        <h3 class="jumbotron text-white bg-primary p-3 pl-5"><i class="fas fa-house-user"></i> Feed</h3>
         <div class="container-fluid">
             <a class="btn btn-link btn-dark border border-danger p-3 mt-3 white-text font-weight-bold" data-toggle="collapse" data-target="#post_collapse" area-expanded="false"><i class="fas fa-plus"></i> Add Post</a>
             <div class="row p-3 collapse" id="post_collapse">
@@ -73,9 +73,9 @@
                 }
                 else{
                     while($row = $post->fetch_array()){
-                    $result = $conn->query("select username from user where id=".$row['user']); // Name of User who's post is
+                    $result = $conn->query("select value from username where user_id=".$row['user']); // Name of User who's post is
                     $result = $result->fetch_array();
-                    $row['user'] = '@ '.$result['username'];
+                    $row['user'] = '@ '.$result['value'];
                     $description = explode(" ",$row['description']); // Description stored as array to find existing urls
                     $type = $conn->query("select name from type where id=".$row['type']); // Find type of post
                     $type = $type->fetch_array();

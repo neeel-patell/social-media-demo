@@ -41,8 +41,11 @@
                     $query = "select friend_id from friend where user_id=$login and approve=1";
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name,username from user where active=1 and id=".$row['friend_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['friend_id']);
                         $name = $name->fetch_array();
+                        $result = $conn->query("select value from username where user_id='".$row['friend_id']."'");
+                        $result = $result->fetch_array();
+                        $name['username'] = $result['value'];
                         $rev_follow = $conn->query("select friend_id from friend where user_id=".$row['friend_id']." and friend_id=$login and approve=1");
             ?>
             <div class="card p-3 col-md-4 mb-3">
@@ -64,8 +67,11 @@
                     $query = "select user_id from friend where friend_id=$login and approve = 1";
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name,username from user where active=1 and id=".$row['user_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']);
                         $name = $name->fetch_array();
+                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'");
+                        $result = $result->fetch_array();
+                        $name['username'] = $result['value'];
             ?>
             <div class="card p-3 col-md-4 mb-3">
                 <div>
@@ -81,8 +87,11 @@
                     $query = "select user_id from friend where friend_id=$login and approve = 0";
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name,username from user where active=1 and id=".$row['user_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']);
                         $name = $name->fetch_array();
+                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'");
+                        $result = $result->fetch_array();
+                        $name['username'] = $result['value'];
             ?>
             <div class="card p-3 col-md-4 mb-3">
                 <div>

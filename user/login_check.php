@@ -12,10 +12,10 @@
         header("location: ../index.php"); // Redirection to home page if session is not set
     }
     $conn = getConn();
-    $full_name = $conn->query("select username from user where id=$login"); // acquire full name of user
-    $full_name = $full_name->fetch_array();
-    if($full_name['username'] == null){
+    $full_name = $conn->query("select value from username where user_id=$login"); // acquire full name of user
+    if(mysqli_num_rows($full_name) == 0){
         header('location: ../set_username.php?msg=setname');
     }
-    $full_name = '@'.$full_name['username'];
+    $full_name = $full_name->fetch_array();
+    $full_name = '@'.$full_name['value'];
 ?>

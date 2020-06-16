@@ -35,8 +35,8 @@
                     <div class="alert alert-secondary text-center" role="alert">Set Username first...</div>
                     <?php }else if($msg === 'notavailable'){ ?>
                     <div class="alert alert-danger text-center" role="alert">Please Pick Other One, This one has taken...</div>
-                    <?php }else if($msg === 'available'){ ?>
-                    <div class="alert alert-success text-center" role="alert">You can use this one...</div>
+                    <?php }else if($msg === 'tryagain'){ ?>
+                    <div class="alert alert-success text-center" role="alert">Please Try again...</div>
                     <?php } ?>
                         
                     <form class="mt-3" action="add_username.php" method="post" onsubmit="return post_check()">
