@@ -15,12 +15,8 @@
             <li class="nav-item">
                 <a class="nav-link brown-text font-weight-bold" href="index.php"><i class="fas fa-home"></i> Feed</a>
             </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link brown-text font-weight-bold dropdown-toggle" id="friends_dropdown" data-toggle="dropdown" area-haspopup="true" area-expanded="false"><i class="fas fa-users"></i> Friends</a>
-                <div class="dropdown-menu" aria-labelledby="friends_dropdown">
-                    <a class="dropdown-item" href="follower.php">Followers</a>
-                    <a class="dropdown-item" href="following.php">Following</a>
-                </div>
+            <li class="nav-item">
+            <a class="nav-link brown-text font-weight-bold" href="friends.php"><i class="fas fa-users"></i> Friends</a>
             </li>
         </ul>
         <form class="form-inline">

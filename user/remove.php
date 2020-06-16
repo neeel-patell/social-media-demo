@@ -26,6 +26,11 @@
             $conn->query($query);
             header('location: friends.php?following');
         }
+        else if($method === "requests"){
+            $query = "delete from friend where user_id=$id and friend_id=$login";
+            $conn->query($query);
+            header('location: friends.php?requests');
+        }
         else{
             $query = "delete from friend where user_id=$id and friend_id=$login";
             $conn->query($query);
