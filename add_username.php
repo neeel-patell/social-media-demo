@@ -24,8 +24,13 @@
         $result = $conn->query($query);
         $result = $result->fetch_array();
         $min_id = $result['min_id'];
-        if($min_id == 0 || $min_id === null){
+        if(($min_id == 0 || $min_id === null) && $character === '_'){
+            $min_id = 1;
+            $max_id = 0;
+        }
+        else if($min_id == 0 || $min_id === null){
             $min_id = get_min_id($character);
+            $max_id = $min_id-1;
         }
         else{
             $max_id = $result['max_id'];
@@ -45,7 +50,6 @@
         $query .= "INSERT INTO username(id,value,user_id) VALUES($min_id,'$username',$login);";
         $query .= "UPDATE username_index set start_index=$min_id, end_index=".($max_id+1)." WHERE `character`='$character';";
         if($character !== 'z'){
-            $next = find_next($character);
             $string = updatable_characters($character);
             $query .= "UPDATE username_index set start_index = start_index + 1, end_index = end_index + 1 WHERE `character` IN($string) AND end_index <> 0";
         }
@@ -56,14 +60,6 @@
             header('location: set_username.php?msg=tryagain');
         }
     }
-    function find_next($character){
-        if($character === '_'){
-            return 'a';
-        }
-        else{
-            return ++$character;
-        }
-    }
     function updatable_characters($character){
         $string = "";
         if($character === '_'){
@@ -72,15 +68,20 @@
             }
         }
         else{
-            for($i = ++ $character ; $i < 'z'; $i++){
+            for($i = ++$character ; $i < 'z'; $i++){
                 $string .= "'$i',";
             }
         }
         return $string."'z'";
     }
     function get_min_id($character){
-        $character = chr(ord($character)-1);
-        $query = "select min(id)'min_id',max(id)'max_id' from username where value like '$character%'";
+        if($character !== '_'){
+            $character = chr(ord($character)-1);
+            $query = "select min(id)'min_id',max(id)'max_id' from username where value like '$character%'";
+        }
+        else{
+            $query = "select min(id)'min_id',max(id)'max_id' from username where value like '\\$character%'";
+        }
         $conn = getConn();
         $result = $conn->query($query);
         $result = $result->fetch_array();
@@ -91,7 +92,10 @@
             $max_id = 0;
         }
         if($max_id == 0){
-            if($character !== 'a'){
+            if($character === 'a'){
+                return get_min_id('_');
+            }
+            else if($character !== '_'){
                 return get_min_id($character);
             }
             else{
