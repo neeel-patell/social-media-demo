@@ -38,15 +38,15 @@
             <div class="row">
             <?php
                 if($method === "following"){ 
-                    $query = "select friend_id from friend where user_id=$login and approve=1";
+                    $query = "select friend_id from friend where user_id=$login and approve=1 order by updated_at desc"; // checking to whom you are following
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['friend_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['friend_id']); // getting name details
                         $name = $name->fetch_array();
-                        $result = $conn->query("select value from username where user_id='".$row['friend_id']."'");
+                        $result = $conn->query("select value from username where user_id='".$row['friend_id']."'"); // getting username
                         $result = $result->fetch_array();
                         $name['username'] = $result['value'];
-                        $rev_follow = $conn->query("select friend_id from friend where user_id=".$row['friend_id']." and friend_id=$login and approve=1");
+                        $rev_follow = $conn->query("select friend_id from friend where user_id=".$row['friend_id']." and friend_id=$login and approve=1"); // to see he/she follows you back or not
             ?>
             <div class="card p-3 col-md-4 mb-3">
                 <div>
@@ -64,12 +64,12 @@
             <div class="col-md-2"></div>
             <?php }}
                 else if($method === "followers"){
-                    $query = "select user_id from friend where friend_id=$login and approve = 1";
+                    $query = "select user_id from friend where friend_id=$login and approve = 1 order by updated_at desc"; // getting followers of a user
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']); // getting name
                         $name = $name->fetch_array();
-                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'");
+                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'"); // getting username
                         $result = $result->fetch_array();
                         $name['username'] = $result['value'];
             ?>
@@ -84,12 +84,12 @@
             <div class="col-md-2"></div>
             <?php }}
                 else{
-                    $query = "select user_id from friend where friend_id=$login and approve = 0";
+                    $query = "select user_id from friend where friend_id=$login and approve = 0 order by created_at desc"; // getting user who requested
                     $friends = $conn->query($query);
                     while($row = $friends->fetch_array()){
-                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']);
+                        $name = $conn->query("select first_name,last_name from user where active=1 and id=".$row['user_id']); // name of requested user
                         $name = $name->fetch_array();
-                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'");
+                        $result = $conn->query("select value from username where user_id='".$row['user_id']."'"); // getting username
                         $result = $result->fetch_array();
                         $name['username'] = $result['value'];
             ?>
@@ -122,7 +122,7 @@
                         swal("Unfollowed", {
                         icon: "success",
                         });
-                        window.location="remove.php?method=following&username="+username;
+                        window.location="remove.php?method=following&username="+username; // request to remove from table
                     }
                 });
             }
@@ -139,7 +139,7 @@
                         swal("Removed", {
                         icon: "success",
                         });
-                        window.location="remove.php?method=followers&username="+username;
+                        window.location="remove.php?method=followers&username="+username; // request to remove from table
                     }
                 });
             }
@@ -155,7 +155,7 @@
                         swal("Confirmed", {
                         icon: "success",
                         });
-                        window.location="confirm_request.php?username="+username;
+                        window.location="confirm_request.php?username="+username; // request to change approve column value to 1
                     }
                 });
             }
@@ -171,7 +171,7 @@
                         swal("Removed", {
                         icon: "success",
                         });
-                        window.location="remove.php?method=requests&username="+username;
+                        window.location="remove.php?method=requests&username="+username; // request to remove from table
                     }
                 });
             }

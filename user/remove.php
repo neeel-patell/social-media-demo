@@ -11,8 +11,9 @@
     $login = $_SESSION['login'];
     $username = $_GET['username'];
 
-    $query = "select id from user where username='$username'";
+    $query = "select user_id'id' from username where value='$username'"; // getting id by username
     $result = $conn->query($query);
+    
     
     if(mysqli_num_rows($result) == 0){
         header('location: index.php');
@@ -21,6 +22,7 @@
         $result = $result->fetch_array();
         $id = $result['id'];
 
+        // deleting appropriate entries and redirections
         if($method === "following"){
             $query = "delete from friend where user_id=$login and friend_id=$id";
             $conn->query($query);

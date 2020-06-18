@@ -10,7 +10,7 @@
     $login = $_SESSION['login'];
     $username = $_GET['username'];
 
-    $query = "select id from user where username='$username'";
+    $query = "select user_id'id' from username where value='$username'"; // getting id by username
     $result = $conn->query($query);
     
     if(mysqli_num_rows($result) == 0){
@@ -22,7 +22,7 @@
 
         $query = "UPDATE friend 
                   SET approve = 1
-                  where user_id = $id AND friend_id = $login";
+                  where user_id = $id AND friend_id = $login"; // update approve to 1 to allow following
         $conn->query($query);
         header('location: friends.php?requests');
     }

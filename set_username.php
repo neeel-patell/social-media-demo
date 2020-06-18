@@ -37,6 +37,8 @@
                     <div class="alert alert-danger text-center" role="alert">Please Pick Other One, This one has taken...</div>
                     <?php }else if($msg === 'tryagain'){ ?>
                     <div class="alert alert-success text-center" role="alert">Please Try again...</div>
+                    <?php }else if($msg === 'num'){ ?>
+                    <div class="alert alert-warning text-center" role="alert">First letter of username must be alphabet or underscore...</div>
                     <?php } ?>
                         
                     <form class="mt-3" action="add_username.php" method="post" onsubmit="return post_check()">
