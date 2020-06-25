@@ -22,9 +22,6 @@
                 <a class="nav-link brown-text font-weight-bold" href="people.php"><i class="fas fa-users"></i> People</a>
             </li>
         </ul>
-        <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search Friends" aria-label="Search" required>
-        </form>
         <div class="d-inline">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">

@@ -102,11 +102,11 @@
                 return get_min_id($character);
             }
             else{
-                return 1; // return 1 as position when you don'd find min id
+                return 1; // return 1 as position when you don't find min id as it'll be 1st username
             }
         }
         else{
-            return ($max_id+1); // return position if we get previous character max id as already set
+            return ($max_id+1); // return position if we get previous character max id as already consisting username from one of the previous characters
         }
     }
 ?>
